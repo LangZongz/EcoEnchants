@@ -1,6 +1,6 @@
 package com.willfp.ecoenchants.proxy.v1_20_R3.registration
 
-import com.willfp.eco.util.StringUtils
+import com.willfp.eco.util.toComponent
 import com.willfp.ecoenchants.display.getFormattedName
 import com.willfp.ecoenchants.enchant.EcoEnchant
 import io.papermc.paper.enchantments.EnchantmentRarity
@@ -64,7 +64,7 @@ class DelegatedCraftEnchantment(
     }
 
     override fun displayName(level: Int): Component {
-        return StringUtils.toComponent(enchant.getFormattedName(level))
+        return enchant.getFormattedName(level).toComponent()
     }
 
     override fun isTradeable(): Boolean {
@@ -110,5 +110,9 @@ class DelegatedCraftEnchantment(
 
     override fun hashCode(): Int {
         return Objects.hash(this.key)
+    }
+
+    override fun toString(): String {
+        return "DelegatedCraftEnchantment(key=$key)"
     }
 }
